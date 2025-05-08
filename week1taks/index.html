@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Contact Management</title>
+</head>
+<body>
+    <h1>Contact List</h1>
+    <table border="1">
+        <tr>
+            <th>Name</th>
+            <th>Phone</th>
+            <th>Email</th>
+        </tr>
+        {% for name, details in contacts.items() %}
+        <tr>
+            <td>{{ name }}</td>
+            <td>{{ details['phone'] }}</td>
+            <td>{{ details['email'] }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    <a href="{{ url_for('add_contact') }}">Add New Contact</a>
+    <a href="{{ url_for('search_contact') }}">Search Contact</a>
+    <a href="{{ url_for('update_contact') }}">Update Contact</a>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Update Contact</title>
+</head>
+<body>
+    <h1>Update Contact</h1>
+
+    <form action="/update" method="post">
+        <label for="name">Enter Name to Search and Update:</label>
+        <input type="text" id="name" name="name" required>
+        <input type="submit" value="Search">
+    </form>
+
+    {% if contact %}
+    <h2>Update Contact Information</h2>
+    <form action="/update" method="post">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" value="{{ contact.name }}" readonly><br><br>
+
+        <label for="phone">New Phone:</label>
+        <input type="text" id="phone" name="phone" value="{{ contact['phone'] }}" required><br><br>
+
+        <label for="email">New Email:</label>
+        <input type="text" id="email" name="email" value="{{ contact['email'] }}" required><br><br>
+
+        <input type="submit" value="Update Contact">
+    </form>
+    {% else %}
+        <p>No contact found for this name. Please try again.</p>
+    {% endif %}
+
+    <a href="{{ url_for('index') }}">Back to Contact List</a>
+</body>
+</html>
